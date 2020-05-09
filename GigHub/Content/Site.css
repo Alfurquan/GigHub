@@ -22,3 +22,85 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*Bootstrap overrides*/
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+}
+.navbar-inverse {
+    background-color: #ff4342;
+    border-color: #ff4342;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+   color: white;
+   transition: all 0.2s ease;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #f0f0f0;
+    background-color: transparent;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+    transition: all 0.2s ease;
+    font-weight:700;
+}
+.navbar-inverse .navbar-brand:hover{
+    color:#f0f0f0;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: rgba(205,40,39,0.55);
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: rgba(205,40,39,0.55);
+}
+
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+}
+
+.dropdown-menu{
+    box-shadow:none;
+    -webkit-box-shadow:none;
+}
+.form-group{
+    margin-bottom:20px;
+}
+.form-control{
+    font-size:17px;
+    padding: 20px 15px;
+}
+.form-control:focus {
+   box-shadow: none;
+   border-color:#ff4342;
+   -webkit-box-shadow:none;
+}
+.btn{
+    font-size:17px;
+    padding: 7px 14px;
+}
+.btn-main{
+    background-color:#ff4342;
+    border-color:#ff4342;
+    color:#fff;
+    transition: all 0.2s ease;
+}
+
+.btn-main:hover, .btn-main:focus {
+    color: #fff;
+    background-color: rgba(205,40,39,0.55);
+    border-color: rgba(205,40,39,0.55);
+}
