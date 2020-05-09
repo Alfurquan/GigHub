@@ -203,6 +203,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CustomValidation\FutureDate.cs" />
+    <Compile Include="ViewModels\CustomValidation\ValidTime.cs" />
     <Compile Include="ViewModels\GigFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
