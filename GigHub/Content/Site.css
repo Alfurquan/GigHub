@@ -104,3 +104,7 @@ body {
     background-color: rgba(205,40,39,0.55);
     border-color: rgba(205,40,39,0.55);
 }
+span.field-validation-error {
+    color: red;
+    font-weight: bold;
+}
