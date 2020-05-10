@@ -182,6 +182,7 @@
     <Compile Include="Controllers\API\Dtos\AttendenceDto.cs" />
     <Compile Include="Controllers\API\Dtos\FollowingDto.cs" />
     <Compile Include="Controllers\API\FollowingsController.cs" />
+    <Compile Include="Controllers\API\GigsController.cs" />
     <Compile Include="Controllers\FolloweesController.cs" />
     <Compile Include="Controllers\GigsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -252,6 +253,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
