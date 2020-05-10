@@ -80,12 +80,14 @@ body {
     margin-bottom:20px;
 }
 .form-control{
-    font-size:17px;
-    padding: 20px 15px;
+    color:#333;
+    font-size:14px;
+    height:44px;
 }
 .form-control:focus {
    box-shadow: none;
    border-color:#ff4342;
+   color:#333;
    -webkit-box-shadow:none;
 }
 /*.btn{
@@ -98,6 +100,8 @@ body {
     color:#fff;
     transition: all 0.2s ease;
 }
+
+
 
 .btn-main:hover, .btn-main:focus {
     color: #fff;
@@ -169,4 +173,14 @@ span.field-validation-error {
     font-size:20px;
     font-weight:bold;
     color:#333;
+}
+
+.gigs > li .actions{
+    font-size:15px;
+    display:none;
+    transition:all 0.3s ease;
+}
+
+.gigs > li:hover .actions{
+    display:block;
 }

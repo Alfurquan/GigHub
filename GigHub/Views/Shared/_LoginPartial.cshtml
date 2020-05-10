@@ -12,11 +12,18 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                <a class="dropdown-item" href="@Url.Action("Attending", "Gigs")">Gigs I'm attending</a>
-                </li>  
-                <li><a class="dropdown-item" href="@Url.Action("Index","Followees")">Artists I'm following</a></li>
+                   <a class="dropdown-item" href="@Url.Action("Mine", "Gigs")">My Upcoming gigs</a>
+                </li>
+                <li>
+                   <a class="dropdown-item" href="@Url.Action("Attending", "Gigs")">Gigs I'm attending</a>
+                </li>
+                <li>
+                   <a class="dropdown-item" href="@Url.Action("Index","Followees")">Artists I'm following</a>
+                </li>
                 <li role="separator" class="divider"></li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                <li>
+                    <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                </li>
             </ul>
         </li>
     </ul>
