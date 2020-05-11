@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿ <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -36,8 +36,7 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/lib")
     @RenderSection("scripts", required: false)
 
     <script type="text/x-template" id="notifications-template">
@@ -46,7 +45,7 @@
             _.each(notifications,function(notification){
             if(notification.type == 1){ %>
 
-            <li><%= notification.gig.artist.name %> has cancelled the gig at <%= notification.gig.venue %> at <%= notification.gig.dateTime %></li>
+            <li><span class="highlight"><%= notification.gig.artist.name %></span> has cancelled the gig at <%= notification.gig.venue %> at <%= moment(notification.gig.dateTime).format("D MMM HH:mm") %></li>
 
             <% }
 
@@ -64,13 +63,13 @@
 
                     if(notification.originalDateTime != notification.gig.dateTime){
                         changes.push('date/time');
-                        originalValues.push(notification.originalDateTime);
-                        newValues.push(notification.gig.dateTime)
+                        originalValues.push(moment(notification.originalDateTime).format("D MMM HH:mm"));
+                        newValues.push(moment(notification.gig.dateTime).format("D MMM HH:mm"))
                     }
 
                   %>
 
-                  <li><%= notification.gig.artist.name %> has changed the <%= changes.join( ' and ' ) %> of the gig from <%= originalValues.join('/') %> to <%= newValues.join('/') %></li>
+                  <li><span class="highlight"><%= notification.gig.artist.name %></span> has changed the <%= changes.join( ' and ' ) %> of the gig from <%= originalValues.join('/') %> to <%= newValues.join('/') %></li>
             <%    
                 }
             })
@@ -97,8 +96,18 @@
                         var html = compiled({ notifications: notifications });
                         return html;
                     },
-                    placement: 'bottom'
-                });
+                    placement: 'bottom',
+
+                }).on("shown.bs.popover", function () {
+                    $.ajax({
+                        url: '/api/notifications/MarkAsRead/',
+                        method: 'POST'
+                    }).done(function () {
+                        $('.js-notifications-count')
+                            .text("")
+                            .addClass('hide')
+                    })
+                })
             });
         })
     </script>
