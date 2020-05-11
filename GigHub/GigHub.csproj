@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -177,12 +180,19 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="AutoMapperConfig\AutoMapperConfig.cs" />
+    <Compile Include="AutoMapperConfig\MapperWrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\AttendancesController.cs" />
     <Compile Include="Controllers\API\Dtos\AttendenceDto.cs" />
     <Compile Include="Controllers\API\Dtos\FollowingDto.cs" />
+    <Compile Include="Controllers\API\Dtos\GenreDto.cs" />
+    <Compile Include="Controllers\API\Dtos\GigDto.cs" />
+    <Compile Include="Controllers\API\Dtos\NotificationDto.cs" />
+    <Compile Include="Controllers\API\Dtos\UserDto.cs" />
     <Compile Include="Controllers\API\FollowingsController.cs" />
     <Compile Include="Controllers\API\GigsController.cs" />
+    <Compile Include="Controllers\API\NotificationsController.cs" />
     <Compile Include="Controllers\FolloweesController.cs" />
     <Compile Include="Controllers\GigsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -226,6 +236,10 @@
     <Compile Include="Migrations\202005101442016_AddIsCancelledToGig.Designer.cs">
       <DependentUpon>202005101442016_AddIsCancelledToGig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005110606390_AddNotification.cs" />
+    <Compile Include="Migrations\202005110606390_AddNotification.Designer.cs">
+      <DependentUpon>202005110606390_AddNotification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -234,6 +248,9 @@
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Gig.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\NotificationType.cs" />
+    <Compile Include="Models\UserNotification.cs" />
     <Compile Include="ViewModels\GigsViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
@@ -348,6 +365,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005101442016_AddIsCancelledToGig.resx">
       <DependentUpon>202005101442016_AddIsCancelledToGig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005110606390_AddNotification.resx">
+      <DependentUpon>202005110606390_AddNotification.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

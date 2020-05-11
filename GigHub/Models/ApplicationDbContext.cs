@@ -13,6 +13,10 @@ namespace GigHub.Models
 
         public DbSet<Following> Followings { get; set; }
 
+        public DbSet<Notification> Notifications { get; set; }
+
+        public DbSet<UserNotification> UserNotifications { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -24,12 +28,13 @@ namespace GigHub.Models
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Attendance>().HasRequired(a => a.Gig).WithMany().WillCascadeOnDelete(false);
+            modelBuilder.Entity<Attendance>().HasRequired(a => a.Gig).WithMany(a => a.Attendances).WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ApplicationUser>().HasMany(u => u.Followers).WithRequired(u => u.Followee).WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ApplicationUser>().HasMany(u => u.Followees).WithRequired(u => u.Follower).WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<UserNotification>().HasRequired(n => n.User).WithMany(a => a.UserNotifications).WillCascadeOnDelete(false);
 
             base.OnModelCreating(modelBuilder);
         }
