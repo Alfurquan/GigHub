@@ -40,7 +40,13 @@
 
                    @if (Model.ShowActions)
                    {
-                       <button class="btn btn-link btn-sm js-toggle-follow" data-user-id="@gig.ArtistId">Follow</button>
+                       <button class="btn btn-link btn-sm 
+                               @(Model.Followings.Contains(gig.ArtistId) ? "btn-following" : "btn-follow") 
+                               js-toggle-follow" 
+                               data-user-id="@gig.ArtistId">
+                           
+                           @(Model.Followings.Contains(gig.ArtistId) ? "Following" : "Follow")
+                       </button>
 
                    }
                </span>
@@ -94,15 +100,33 @@
             })
 
             $('.js-toggle-follow').click(function (e) {
-                var button = e.target;
-                $.post('/api/followings', { followeeId: $(button).attr('data-user-id') })
-                    .done(function () {
-                        $(button)
-                            .text('Following');
-                    })
-                    .fail(function () {
+                var button = $(e.target);
+                if (button.hasClass("btn-follow")) {
+                    $.post('/api/followings', { followeeId: button.attr('data-user-id') })
+                        .done(function () {
+                            button
+                                .removeClass("btn-follow")
+                                .addClass("btn-following")
+                                .text('Following');
+                        })
+                        .fail(function () {
+                            alert('Something failed!')
+                        })
+                } else {
+
+                    $.ajax({
+                        url: "/api/followings/" + button.attr('data-user-id'),
+                        method: "DELETE"
+                    }).done(function () {
+                        button
+                            .removeClass("btn-following")
+                            .addClass("btn-follow")
+                            .text("Follow");
+
+                    }).fail(function () {
                         alert('Something failed!')
                     })
+                }
             })
 
 
