@@ -222,3 +222,7 @@ ul.notifications-list .highlight{
 #search-gigs{
     width:300px;
 }
+
+#search-gigs input{
+    font-size:13px;
+}
