@@ -61,6 +61,18 @@ body {
     background-color: rgba(205,40,39,0.55);
 }
 
+
+.navbar-inverse > .notifications{
+    position:relative;
+}
+
+.notifications .badge{
+    position:absolute;
+    top:8px;
+    right:0;
+    background:#a80a0a;
+}
+
 .dropdown-toggle::after {
     display: inline-block;
     margin-left: .255em;
@@ -183,4 +195,17 @@ span.field-validation-error {
 
 .gigs > li:hover .actions{
     display:block;
+}
+
+ul.notifications-list{
+    list-style:none;
+    padding-left:0px;
+}
+ul.notifications-list > li{
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+ul.notifications-list > li:last-child{
+    border:none;
 }
