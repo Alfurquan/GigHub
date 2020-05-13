@@ -1,27 +1,26 @@
-﻿using GigHub.Models;
-using GigHub.ViewModels;
+﻿using GigHub.Persistence;
 using Microsoft.AspNet.Identity;
-using System;
-using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using GigHub.Core.Models;
+using GigHub.Core.ViewModels;
 
 namespace GigHub.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext context;
+        private readonly UnitOfWork unitOfWork;
+
 
         public HomeController()
         {
-            this.context = new ApplicationDbContext();
+            context = new ApplicationDbContext();
+            unitOfWork = new UnitOfWork(context);
         }
         public ActionResult Index(string query = null)
         {
-            var upcomingGigs = context.Gigs
-                .Include(g => g.Artist)
-                .Include(g => g.Genre)
-                .Where(g => g.DateTime > DateTime.Now && !g.IsCancelled);
+            var upcomingGigs = unitOfWork.Gigs.GetUpcomingGigs();
 
             if (!string.IsNullOrWhiteSpace(query))
                 upcomingGigs = upcomingGigs
@@ -31,16 +30,6 @@ namespace GigHub.Controllers
 
             var userId = User.Identity.GetUserId();
 
-            var attendences = context.Attendances
-                .Where(a => a.AttendeeId == userId && a.Gig.DateTime > DateTime.Now)
-                .ToList()
-                .ToLookup(a => a.GigId);
-
-            var followings = context.Followings
-                    .Where(a => a.FollowerId == userId)
-                    .ToList()
-                    .ToLookup(a => a.FolloweeId);
-
 
             var viewModel = new GigsViewModel
             {
@@ -48,8 +37,7 @@ namespace GigHub.Controllers
                 ShowActions = User.Identity.IsAuthenticated,
                 Heading = "Upcoming Gigs",
                 SearchTerm = query,
-                Attendances = attendences,
-                Followings = followings
+                Attendances = unitOfWork.Attendances.GetFutureAttendances(userId).ToLookup(a => a.GigId),
             };
 
             return View("Gigs", viewModel);

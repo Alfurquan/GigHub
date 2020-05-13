@@ -24,6 +24,12 @@ textarea {
 }
 
 /*Bootstrap overrides*/
+@font-face {
+    font-family: "Glyphicons Halflings";
+    src: url("fonts/glyphicons-halflings-regular.eot");
+    src: url("fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("fonts/glyphicons-halflings-regular.woff2") format("woff2"), url("fonts/glyphicons-halflings-regular.woff") format("woff"), url("fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     font-size: 17px;
@@ -146,6 +152,7 @@ span.field-validation-error {
     text-align:center;
     width:60px;
     border-radius:8px;
+    height:74px;
 } 
 
 .gigs > li .month{
@@ -160,6 +167,7 @@ span.field-validation-error {
     color:#333;
     font-size:20px;
     padding:6px 12px;
+    height:50px;
 
 }
 
@@ -176,7 +184,9 @@ span.field-validation-error {
 }
 
 .gigs > li .details .genre{
-    font-size:15px;
+    font-size:14px;
+    display:block;
+    margin-bottom:4px;
 }
 
 .follow-artist{
